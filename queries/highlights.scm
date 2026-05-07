@@ -12,3 +12,39 @@
 (string) @string
 (char) @character
 (bool) @boolean
+
+; Punctuation
+[
+  "."
+  ":"
+  ";"
+] @punctuation.delimiter
+
+[
+  "="
+  "+"
+  "-"
+  "*"
+  "/"
+  "%"
+  "|"
+  "^"
+  "&"
+  "<<"
+  ">>"
+  "||"
+  "&&"
+  "=="
+  "!="
+  "<"
+  ">"
+  "<="
+  ">="
+  "!"
+  "~"
+] @operator
+
+[
+  "as"
+  "bitcast"
+] @keyword.operator
