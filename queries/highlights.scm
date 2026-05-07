@@ -2,7 +2,10 @@
 ((name) @variable (#set! priority 95))
 
 ; Keywords
-"fn" @keyword.type
+[
+  "fn"
+  "struct"
+] @keyword.type
 
 ; Field
 (field name: (name) @property)

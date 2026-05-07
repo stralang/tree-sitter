@@ -57,6 +57,7 @@ module.exports = grammar({
       $.binary_expr,
       $.unary_expr,
       $.function,
+      $.struct,
       $.function_type,
       $.const_type,
       $.primitive_type,
@@ -104,6 +105,14 @@ module.exports = grammar({
       $.function_type,
       choice($.code_block)
     )),
+    struct: $ => seq(
+      'struct',
+      '{',
+      repeat(seq(
+        $.field, optional(choice(',', ';'))
+      )),
+      '}'
+    ),
 
     function_type: $ => prec.left(0, seq(
       'fn',

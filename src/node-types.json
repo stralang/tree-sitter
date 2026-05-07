@@ -82,6 +82,10 @@
           "named": true
         },
         {
+          "type": "struct",
+          "named": true
+        },
+        {
           "type": "unary_expr",
           "named": true
         }
@@ -210,6 +214,21 @@
     "type": "source_file",
     "named": true,
     "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "field",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "struct",
+    "named": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -397,6 +416,10 @@
   {
     "type": "string",
     "named": true
+  },
+  {
+    "type": "struct",
+    "named": false
   },
   {
     "type": "true",
