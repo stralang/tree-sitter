@@ -20,6 +20,21 @@
     "fields": {}
   },
   {
+    "type": "code_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "field",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "const_type",
     "named": true,
     "fields": {},
@@ -48,6 +63,14 @@
         },
         {
           "type": "const_type",
+          "named": true
+        },
+        {
+          "type": "function",
+          "named": true
+        },
+        {
+          "type": "function_type",
           "named": true
         },
         {
@@ -99,6 +122,51 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "function",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "code_block",
+          "named": true
+        },
+        {
+          "type": "function_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "function_type",
+    "named": true,
+    "fields": {
+      "return": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "field",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -194,11 +262,23 @@
     "named": false
   },
   {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
     "type": "*",
     "named": false
   },
   {
     "type": "+",
+    "named": false
+  },
+  {
+    "type": ",",
     "named": false
   },
   {
@@ -303,6 +383,10 @@
     "named": false
   },
   {
+    "type": "fn",
+    "named": false
+  },
+  {
     "type": "isize",
     "named": false
   },
@@ -327,11 +411,19 @@
     "named": false
   },
   {
+    "type": "{",
+    "named": false
+  },
+  {
     "type": "|",
     "named": false
   },
   {
     "type": "||",
+    "named": false
+  },
+  {
+    "type": "}",
     "named": false
   },
   {

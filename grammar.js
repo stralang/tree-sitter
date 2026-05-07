@@ -7,6 +7,14 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
+function repeatSeperated(rule, seperator) {
+  return optional(seq(
+    rule,
+    repeat(seq(seperator, rule)),
+    optional(seperator),
+  ))
+}
+
 module.exports = grammar({
   name: "stra",
 
@@ -15,14 +23,24 @@ module.exports = grammar({
     $.comment,
   ],
   rules: {
-    source_file: $ => repeat(choice(
-      seq($.field, ';'),
+    source_file: $ => repeat(seq(
+      choice($.field),
+      optional(';')
     )),
 
     comment: $ => token(choice(
       seq("//", /.*/),
       seq("/*", /[^\*\/]*/, "*/"),
     )),
+
+    code_block: $ => seq(
+      '{',
+      repeat(seq(
+        choice($.field),
+        optional(';'),
+      )),
+      '}'
+    ),
 
     field: $ => seq(
       field('name', $.name),
@@ -38,6 +56,8 @@ module.exports = grammar({
       $.literal_expr,
       $.binary_expr,
       $.unary_expr,
+      $.function,
+      $.function_type,
       $.const_type,
       $.primitive_type,
     ),
@@ -80,6 +100,18 @@ module.exports = grammar({
       seq('*', $.expr),
     )),
 
+    function: $ => prec.right(1000, seq(
+      $.function_type,
+      choice($.code_block)
+    )),
+
+    function_type: $ => prec.left(0, seq(
+      'fn',
+      '(',
+      repeatSeperated($.field, ','),
+      ')',
+      optional(field('return', $.expr)),
+    )),
     const_type: $ => prec.right(0, seq('const', ' ', $.expr)),
     primitive_type: $ => choice(
       'void',

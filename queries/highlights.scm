@@ -2,6 +2,7 @@
 ((name) @variable (#set! priority 95))
 
 ; Keywords
+"fn" @keyword.type
 
 ; Field
 (field name: (name) @property)
@@ -18,7 +19,15 @@
 
 ; Punctuation
 [
+  "{"
+  "}"
+  "("
+  ")"
+] @punctuation.bracket
+
+[
   "."
+  ","
   ":"
   ";"
 ] @punctuation.delimiter
