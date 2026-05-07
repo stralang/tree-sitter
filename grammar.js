@@ -15,7 +15,7 @@ module.exports = grammar({
     $.comment,
   ],
   rules: {
-    source_file: $ => seq(choice(
+    source_file: $ => repeat(choice(
       seq($.field, ';'),
     )),
 
