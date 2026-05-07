@@ -960,13 +960,34 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "STRING",
-          "value": "void"
+          "type": "SYMBOL",
+          "name": "void_type"
         },
         {
-          "type": "STRING",
-          "value": "bool"
+          "type": "SYMBOL",
+          "name": "bool_type"
         },
+        {
+          "type": "SYMBOL",
+          "name": "integer_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "float_type"
+        }
+      ]
+    },
+    "void_type": {
+      "type": "STRING",
+      "value": "void"
+    },
+    "bool_type": {
+      "type": "STRING",
+      "value": "bool"
+    },
+    "integer_type": {
+      "type": "CHOICE",
+      "members": [
         {
           "type": "PATTERN",
           "value": "[ui]\\d+"
@@ -978,7 +999,12 @@
         {
           "type": "STRING",
           "value": "isize"
-        },
+        }
+      ]
+    },
+    "float_type": {
+      "type": "CHOICE",
+      "members": [
         {
           "type": "STRING",
           "value": "f16"

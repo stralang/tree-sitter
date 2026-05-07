@@ -123,11 +123,19 @@ module.exports = grammar({
     )),
     const_type: $ => prec.right(0, seq('const', ' ', $.expr)),
     primitive_type: $ => choice(
-      'void',
-      'bool',
+      $.void_type,
+      $.bool_type,
+      $.integer_type,
+      $.float_type,
+    ),
+    void_type: $ => 'void',
+    bool_type: $ => 'bool',
+    integer_type: $ => choice(
       /[ui]\d+/,
       'usize',
       'isize',
+    ),
+    float_type: $ => choice(
       'f16',
       'f32',
       'f64',

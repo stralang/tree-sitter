@@ -12,6 +12,10 @@
 
 ; Types
 (primitive_type) @type
+(void_type) @type
+(bool_type) @type
+(integer_type) @type
+(float_type) @type
 ("const") @keyword.type
 
 ; Literals
