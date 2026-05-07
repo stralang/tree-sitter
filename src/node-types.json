@@ -251,6 +251,11 @@
     "named": true
   },
   {
+    "type": "comment",
+    "named": true,
+    "extra": true
+  },
+  {
     "type": "f128",
     "named": false
   },

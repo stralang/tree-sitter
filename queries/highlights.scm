@@ -48,3 +48,7 @@
   "as"
   "bitcast"
 ] @keyword.operator
+
+; Extras
+
+(comment) @comment @spell

@@ -10,9 +10,18 @@
 module.exports = grammar({
   name: "stra",
 
+  extras: ($) => [
+    /\s/,
+    $.comment,
+  ],
   rules: {
     source_file: $ => seq(choice(
       seq($.field, ';'),
+    )),
+
+    comment: $ => token(choice(
+      seq("//", /.*/),
+      seq("/*", /[^\*\/]*/, "*/"),
     )),
 
     field: $ => seq(
