@@ -29,6 +29,7 @@ module.exports = grammar({
       $.literal_expr,
       $.binary_expr,
       $.unary_expr,
+      $.primitive_type,
     ),
     literal_expr: $ => choice(
       $.number,
@@ -68,6 +69,18 @@ module.exports = grammar({
       seq('&', $.expr),
       seq('*', $.expr),
     )),
+
+    primitive_type: $ => choice(
+      'void',
+      'bool',
+      /[ui]\d+/,
+      'usize',
+      'isize',
+      'f16',
+      'f32',
+      'f64',
+      'f128',
+    ),
 
     name: $ => /[_a-zA-Z][_a-zA-Z0-9]*/,
     number: $ => choice(

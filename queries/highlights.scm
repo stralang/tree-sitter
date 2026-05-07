@@ -4,6 +4,9 @@
 ; Field
 (field name: (name) @property)
 
+; Types
+(primitive_type) @type
+
 ; Literals
 (number) @number
 (string) @string

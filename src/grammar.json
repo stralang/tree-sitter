@@ -110,6 +110,10 @@
         {
           "type": "SYMBOL",
           "name": "unary_expr"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "primitive_type"
         }
       ]
     },
@@ -674,6 +678,47 @@
           }
         ]
       }
+    },
+    "primitive_type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "void"
+        },
+        {
+          "type": "STRING",
+          "value": "bool"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[ui]\\d+"
+        },
+        {
+          "type": "STRING",
+          "value": "usize"
+        },
+        {
+          "type": "STRING",
+          "value": "isize"
+        },
+        {
+          "type": "STRING",
+          "value": "f16"
+        },
+        {
+          "type": "STRING",
+          "value": "f32"
+        },
+        {
+          "type": "STRING",
+          "value": "f64"
+        },
+        {
+          "type": "STRING",
+          "value": "f128"
+        }
+      ]
     },
     "name": {
       "type": "PATTERN",

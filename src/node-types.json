@@ -36,6 +36,10 @@
           "named": true
         },
         {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
           "type": "unary_expr",
           "named": true
         }
@@ -107,6 +111,11 @@
   },
   {
     "type": "number",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "primitive_type",
     "named": true,
     "fields": {}
   },
@@ -234,11 +243,35 @@
     "named": false
   },
   {
+    "type": "bool",
+    "named": false
+  },
+  {
     "type": "char",
     "named": true
   },
   {
+    "type": "f128",
+    "named": false
+  },
+  {
+    "type": "f16",
+    "named": false
+  },
+  {
+    "type": "f32",
+    "named": false
+  },
+  {
+    "type": "f64",
+    "named": false
+  },
+  {
     "type": "false",
+    "named": false
+  },
+  {
+    "type": "isize",
     "named": false
   },
   {
@@ -251,6 +284,14 @@
   },
   {
     "type": "true",
+    "named": false
+  },
+  {
+    "type": "usize",
+    "named": false
+  },
+  {
+    "type": "void",
     "named": false
   },
   {
