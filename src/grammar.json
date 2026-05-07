@@ -149,6 +149,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "const_type"
+        },
+        {
+          "type": "SYMBOL",
           "name": "primitive_type"
         }
       ]
@@ -711,6 +715,27 @@
                 "name": "expr"
               }
             ]
+          }
+        ]
+      }
+    },
+    "const_type": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "const"
+          },
+          {
+            "type": "STRING",
+            "value": " "
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expr"
           }
         ]
       }

@@ -38,6 +38,7 @@ module.exports = grammar({
       $.literal_expr,
       $.binary_expr,
       $.unary_expr,
+      $.const_type,
       $.primitive_type,
     ),
     literal_expr: $ => choice(
@@ -79,6 +80,7 @@ module.exports = grammar({
       seq('*', $.expr),
     )),
 
+    const_type: $ => prec.right(0, seq('const', ' ', $.expr)),
     primitive_type: $ => choice(
       'void',
       'bool',
