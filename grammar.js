@@ -16,12 +16,12 @@ module.exports = grammar({
     )),
 
     field: $ => seq(
-      $.name,
+      field('name', $.name),
       ':',
-      optional($.expr),
+      field('type', optional($.expr)),
       optional(prec(100, seq(
         choice('=', ':'),
-        $.expr,
+        field('default', $.expr),
       )))
     ),
 
