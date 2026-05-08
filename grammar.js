@@ -141,6 +141,7 @@ module.exports = grammar({
       $.struct,
       $.enum,
       $.union,
+      $.import,
       $.function_type,
       $.array_type,
       $.const_type,
@@ -224,6 +225,7 @@ module.exports = grammar({
       )),
       '}'
     ),
+    import: $ => seq('import', $.string),
 
     function_type: $ => prec.left(0, seq(
       'fn',

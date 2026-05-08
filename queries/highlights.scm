@@ -7,6 +7,7 @@
   "asm"
   "comptime"
 ] @keyword
+("import") @include
 [
   "struct"
   "enum"
