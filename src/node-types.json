@@ -20,21 +20,6 @@
     "fields": {}
   },
   {
-    "type": "code_block",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "field",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "const_type",
     "named": true,
     "fields": {},
@@ -75,6 +60,10 @@
         },
         {
           "type": "literal_expr",
+          "named": true
+        },
+        {
+          "type": "name",
           "named": true
         },
         {
@@ -142,11 +131,11 @@
       "required": true,
       "types": [
         {
-          "type": "code_block",
+          "type": "function_type",
           "named": true
         },
         {
-          "type": "function_type",
+          "type": "stmt_block",
           "named": true
         }
       ]
@@ -251,6 +240,25 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "field",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "stmt_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "expr",
+          "named": true
+        },
         {
           "type": "field",
           "named": true

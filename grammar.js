@@ -18,6 +18,10 @@ function repeatSeperated(rule, seperator) {
 module.exports = grammar({
   name: "stra",
 
+  conflicts: $ => [
+    [$.field],
+  ],
+
   extras: ($) => [
     /\s/,
     $.comment,
@@ -33,15 +37,6 @@ module.exports = grammar({
       seq("/*", /[^\*\/]*/, "*/"),
     )),
 
-    code_block: $ => seq(
-      '{',
-      repeat(seq(
-        choice($.field),
-        optional(';'),
-      )),
-      '}'
-    ),
-
     field: $ => seq(
       field('name', $.name),
       ':',
@@ -52,7 +47,20 @@ module.exports = grammar({
       )))
     ),
 
+    stmt_block: $ => seq(
+      '{',
+      repeat(seq(
+        choice(
+          $.field,
+          $.expr,
+        ),
+        optional(';')
+      )),
+      '}'
+    ),
+
     expr: $ => choice(
+      $.name,
       $.literal_expr,
       $.binary_expr,
       $.unary_expr,
@@ -103,7 +111,7 @@ module.exports = grammar({
 
     function: $ => prec.right(1000, seq(
       $.function_type,
-      choice($.code_block)
+      choice($.stmt_block)
     )),
     struct: $ => seq(
       'struct',
