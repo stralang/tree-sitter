@@ -34,7 +34,18 @@ module.exports = grammar({
       seq("/*", /[^\*\/]*/, "*/"),
     )),
 
+    attributes: $ => seq(
+      '@', '(',
+      repeatSeperated($.attribute, ','),
+      ')'
+    ),
+    attribute: $ => seq(
+      $.name,
+      optional(seq('=', $.expr)),
+    ),
+
     field: $ => seq(
+      optional($.attributes),
       field('name', $.name),
       ':',
       field('type', optional($.expr)),

@@ -52,6 +52,8 @@
   ";"
 ] @punctuation.delimiter
 
+("@") @punctuation.special
+
 [
   "="
   "+"
