@@ -11,6 +11,12 @@
   "if"
   "else"
 ] @keyword.conditional
+[
+  "for"
+  "in"
+  "break"
+  "continue"
+] @keyword.repeat
 
 ; Field
 (field name: (name) @property)

@@ -51,6 +51,9 @@ module.exports = grammar({
         $.expr,
         $.return_stmt,
         $.if_stmt,
+        $.for_stmt,
+        $.break_stmt,
+        $.continue_stmt,
       ),
       optional(';')
     ),
@@ -64,6 +67,18 @@ module.exports = grammar({
         choice($.stmt_block, $.if_stmt),
       ))),
     ),
+    for_stmt: $ => seq(
+      'for',
+      repeatSeperated(choice(
+        $.field,
+        $.expr,
+        seq($.name, 'in', $.for_range),
+      ), ';'),
+      $.stmt_block,
+    ),
+    for_range: $ => seq($.number, choice('..<', '..='), $.number),
+    break_stmt: $ => prec.right(1, seq('break', optional($.name))),
+    continue_stmt: $ => prec.right(1, seq('continue', optional($.name))),
 
     expr: $ => choice(
       $.name,
