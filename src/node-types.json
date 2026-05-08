@@ -243,6 +243,10 @@
         {
           "type": "unary_expr",
           "named": true
+        },
+        {
+          "type": "union",
+          "named": true
         }
       ]
     }
@@ -686,6 +690,29 @@
     }
   },
   {
+    "type": "union",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "field",
+          "named": true
+        },
+        {
+          "type": "integer_type",
+          "named": true
+        },
+        {
+          "type": "void_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": " ",
     "named": false
   },
@@ -916,6 +943,10 @@
   },
   {
     "type": "true",
+    "named": false
+  },
+  {
+    "type": "union",
     "named": false
   },
   {

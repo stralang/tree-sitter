@@ -9,6 +9,7 @@
 [
   "struct"
   "enum"
+  "union"
 ] @keyword.type
 ("fn") @keyword.function
 ("return") @keyword.return

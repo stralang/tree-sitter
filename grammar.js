@@ -131,6 +131,7 @@ module.exports = grammar({
       $.function,
       $.struct,
       $.enum,
+      $.union,
       $.function_type,
       $.const_type,
       $.primitive_type,
@@ -199,6 +200,15 @@ module.exports = grammar({
     enumerator: $ => seq(
       field('name', $.name),
       optional(seq('=', $.expr))
+    ),
+    union: $ => seq(
+      'union',
+      optional(choice($.void_type, $.integer_type)),
+      '{',
+      repeat(seq(
+        $.field, optional(choice(',', ';')),
+      )),
+      '}'
     ),
 
     function_type: $ => prec.left(0, seq(
