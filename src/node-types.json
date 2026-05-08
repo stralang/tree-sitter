@@ -15,34 +15,70 @@
     }
   },
   {
-    "type": "assembly_inst",
+    "type": "assembly_inst_expr",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        },
-        {
-          "type": "name",
-          "named": true
-        }
-      ]
+    "fields": {
+      "input": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "register": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "%",
+            "named": false
+          },
+          {
+            "type": "name",
+            "named": true
+          }
+        ]
+      },
+      "return": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "=",
+            "named": false
+          },
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "assembly_stmt",
     "named": true,
-    "fields": {},
+    "fields": {
+      "inst": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "name",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": false,
       "types": [
         {
-          "type": "assembly_inst",
+          "type": "assembly_inst_expr",
           "named": true
         }
       ]

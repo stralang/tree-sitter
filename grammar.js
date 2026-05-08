@@ -112,16 +112,17 @@ module.exports = grammar({
     assembly_stmt: $ => seq(
       'asm',
       '{',
-      repeatSeperated($.assembly_inst, ';'),
+      repeat(seq(
+        field('inst', $.name),
+        repeatSeperated($.assembly_inst_expr, ','),
+        ';'
+      )),
       '}',
     ),
-    assembly_inst: $ => seq(
-      $.name,
-      repeatSeperated(choice(
-        $.expr,
-        seq('=', $.expr),
-        seq('%', $.name),
-      ), ',')
+    assembly_inst_expr: $ => choice(
+      field('input', $.expr),
+      field('return', seq('=', $.expr)),
+      field('register', seq('%', $.name)),
     ),
     comptime_stmt: $ => seq(choice('comptime', '$'), $.stmt_block),
 

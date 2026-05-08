@@ -98,6 +98,10 @@
   "bitcast"
 ] @keyword.operator
 
+; Assembly
+(assembly_stmt inst: (name) @function.call)
+(assembly_inst_expr register: (_) @variable.builtin)
+
 ; Extras
 
 (attribute name: (name) @attribute)
