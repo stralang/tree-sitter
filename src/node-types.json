@@ -99,6 +99,21 @@
     }
   },
   {
+    "type": "defer_stmt",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "expr",
     "named": true,
     "fields": {},
@@ -447,6 +462,10 @@
           "named": true
         },
         {
+          "type": "defer_stmt",
+          "named": true
+        },
+        {
           "type": "expr",
           "named": true
         },
@@ -726,6 +745,10 @@
   },
   {
     "type": "continue",
+    "named": false
+  },
+  {
+    "type": "defer",
     "named": false
   },
   {

@@ -3,6 +3,9 @@
 
 ; Keywords
 [
+  "defer"
+] @keyword
+[
   "struct"
 ] @keyword.type
 ("fn") @keyword.function

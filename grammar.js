@@ -66,6 +66,7 @@ module.exports = grammar({
         $.break_stmt,
         $.continue_stmt,
         $.switch_stmt,
+        $.defer_stmt,
       ),
       optional(';')
     ),
@@ -105,6 +106,7 @@ module.exports = grammar({
       '=>',
       $.stmt_block,
     ),
+    defer_stmt: $ => seq('defer', $.expr),
 
     expr: $ => choice(
       $.name,
