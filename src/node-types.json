@@ -1,5 +1,39 @@
 [
   {
+    "type": "assembly_inst",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expr",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "assembly_stmt",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "assembly_inst",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "attribute",
     "named": true,
     "fields": {},
@@ -454,6 +488,10 @@
       "required": true,
       "types": [
         {
+          "type": "assembly_stmt",
+          "named": true
+        },
+        {
           "type": "break_stmt",
           "named": true
         },
@@ -716,6 +754,10 @@
   },
   {
     "type": "as",
+    "named": false
+  },
+  {
+    "type": "asm",
     "named": false
   },
   {

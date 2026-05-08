@@ -4,6 +4,7 @@
 ; Keywords
 [
   "defer"
+  "asm"
 ] @keyword
 [
   "struct"

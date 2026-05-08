@@ -67,6 +67,7 @@ module.exports = grammar({
         $.continue_stmt,
         $.switch_stmt,
         $.defer_stmt,
+        $.assembly_stmt,
       ),
       optional(';')
     ),
@@ -107,6 +108,20 @@ module.exports = grammar({
       $.stmt_block,
     ),
     defer_stmt: $ => seq('defer', $.expr),
+    assembly_stmt: $ => seq(
+      'asm',
+      '{',
+      repeatSeperated($.assembly_inst, ';'),
+      '}',
+    ),
+    assembly_inst: $ => seq(
+      $.name,
+      repeatSeperated(choice(
+        $.expr,
+        seq('=', $.expr),
+        seq('%', $.name),
+      ), ',')
+    ),
 
     expr: $ => choice(
       $.name,
