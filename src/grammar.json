@@ -300,6 +300,10 @@
             {
               "type": "SYMBOL",
               "name": "assembly_stmt"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "comptime_stmt"
             }
           ]
         },
@@ -858,6 +862,28 @@
         }
       ]
     },
+    "comptime_stmt": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "comptime"
+            },
+            {
+              "type": "STRING",
+              "value": "$"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "stmt_block"
+        }
+      ]
+    },
     "expr": {
       "type": "CHOICE",
       "members": [
@@ -884,6 +910,10 @@
         {
           "type": "SYMBOL",
           "name": "call_expr"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "comptime_expr"
         },
         {
           "type": "SYMBOL",
@@ -1567,6 +1597,32 @@
           "value": ")"
         }
       ]
+    },
+    "comptime_expr": {
+      "type": "PREC_RIGHT",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "comptime"
+              },
+              {
+                "type": "STRING",
+                "value": "$"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expr"
+          }
+        ]
+      }
     },
     "function": {
       "type": "PREC_RIGHT",

@@ -5,6 +5,7 @@
 [
   "defer"
   "asm"
+  "comptime"
 ] @keyword
 [
   "struct"
@@ -65,6 +66,7 @@
 [
   "@"
   "=>"
+  "$"
 ] @punctuation.special
 
 [
