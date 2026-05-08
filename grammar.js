@@ -53,11 +53,13 @@ module.exports = grammar({
         choice(
           $.field,
           $.expr,
+          $.return_stmt,
         ),
         optional(';')
       )),
       '}'
     ),
+    return_stmt: $ => seq('return', $.expr),
 
     expr: $ => choice(
       $.name,

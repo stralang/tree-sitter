@@ -171,6 +171,10 @@
                   {
                     "type": "SYMBOL",
                     "name": "expr"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "return_stmt"
                   }
                 ]
               },
@@ -192,6 +196,19 @@
         {
           "type": "STRING",
           "value": "}"
+        }
+      ]
+    },
+    "return_stmt": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "return"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expr"
         }
       ]
     },

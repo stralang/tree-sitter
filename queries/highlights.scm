@@ -6,6 +6,7 @@
   "struct"
 ] @keyword.type
 ("fn") @keyword.function
+("return") @keyword.return
 
 ; Field
 (field name: (name) @property)
