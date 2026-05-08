@@ -130,6 +130,7 @@ module.exports = grammar({
       $.unary_expr,
       $.function,
       $.struct,
+      $.enum,
       $.function_type,
       $.const_type,
       $.primitive_type,
@@ -184,6 +185,20 @@ module.exports = grammar({
         $.field, optional(choice(',', ';'))
       )),
       '}'
+    ),
+    enum: $ => seq(
+      'enum',
+      optional($.integer_type),
+      '{',
+      repeat(seq(
+        choice($.field, $.enumerator),
+        optional(choice(',', ';'))
+      )),
+      '}'
+    ),
+    enumerator: $ => seq(
+      field('name', $.name),
+      optional(seq('=', $.expr))
     ),
 
     function_type: $ => prec.left(0, seq(

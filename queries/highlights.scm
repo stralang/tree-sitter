@@ -8,6 +8,7 @@
 ] @keyword
 [
   "struct"
+  "enum"
 ] @keyword.type
 ("fn") @keyword.function
 ("return") @keyword.return
@@ -25,6 +26,7 @@
 
 ; Field
 (field name: (name) @property)
+(enumerator name: (name) @constant)
 
 ; Types
 (primitive_type) @type.builtin
