@@ -126,8 +126,17 @@
                     "type": "FIELD",
                     "name": "default",
                     "content": {
-                      "type": "SYMBOL",
-                      "name": "expr"
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "expr"
+                        },
+                        {
+                          "type": "STRING",
+                          "value": "---"
+                        }
+                      ]
                     }
                   }
                 ]
@@ -805,6 +814,10 @@
               {
                 "type": "SYMBOL",
                 "name": "stmt_block"
+              },
+              {
+                "type": "STRING",
+                "value": "---"
               }
             ]
           }

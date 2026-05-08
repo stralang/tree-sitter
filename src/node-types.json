@@ -90,6 +90,10 @@
         "required": false,
         "types": [
           {
+            "type": "---",
+            "named": false
+          },
+          {
             "type": "expr",
             "named": true
           }
@@ -342,6 +346,10 @@
   },
   {
     "type": "-",
+    "named": false
+  },
+  {
+    "type": "---",
     "named": false
   },
   {

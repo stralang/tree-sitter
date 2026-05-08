@@ -18,6 +18,8 @@
 (float_type) @type
 ("const") @keyword.type
 
+("---") @type.builtin ; Undefined
+
 ; Literals
 (number) @number
 (string) @string

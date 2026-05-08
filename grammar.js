@@ -43,7 +43,7 @@ module.exports = grammar({
       field('type', optional($.expr)),
       optional(prec(100, seq(
         choice('=', ':'),
-        field('default', $.expr),
+        field('default', choice($.expr, '---')),
       )))
     ),
 
@@ -111,7 +111,7 @@ module.exports = grammar({
 
     function: $ => prec.right(1000, seq(
       $.function_type,
-      choice($.stmt_block)
+      choice($.stmt_block, '---')
     )),
     struct: $ => seq(
       'struct',
