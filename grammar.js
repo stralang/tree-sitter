@@ -129,6 +129,7 @@ module.exports = grammar({
       $.binary_expr,
       $.unary_expr,
       $.index_expr,
+      $.call_expr,
       $.function,
       $.struct,
       $.enum,
@@ -177,6 +178,7 @@ module.exports = grammar({
       seq('*', $.expr),
     )),
     index_expr: $ => prec.right(1, seq($.expr, '[', $.expr, ']')),
+    call_expr: $ => seq($.expr, '(', repeatSeperated($.expr, ','), ')'),
 
     function: $ => prec.right(1000, seq(
       $.function_type,
