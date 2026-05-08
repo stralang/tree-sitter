@@ -40,7 +40,7 @@ module.exports = grammar({
       ')'
     ),
     attribute: $ => seq(
-      $.name,
+      field('name', $.name),
       optional(seq('=', $.expr)),
     ),
 

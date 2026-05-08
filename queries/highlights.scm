@@ -96,4 +96,5 @@
 
 ; Extras
 
+(attribute name: (name) @attribute)
 (comment) @comment @spell
