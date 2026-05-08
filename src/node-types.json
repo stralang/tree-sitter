@@ -1,5 +1,20 @@
 [
   {
+    "type": "array_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "assembly_inst",
     "named": true,
     "fields": {},
@@ -212,6 +227,10 @@
       "required": true,
       "types": [
         {
+          "type": "array_type",
+          "named": true
+        },
+        {
           "type": "binary_expr",
           "named": true
         },
@@ -229,6 +248,10 @@
         },
         {
           "type": "function_type",
+          "named": true
+        },
+        {
+          "type": "index_expr",
           "named": true
         },
         {
@@ -443,6 +466,21 @@
       "types": [
         {
           "type": "stmt_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "index_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expr",
           "named": true
         }
       ]
@@ -833,6 +871,14 @@
   },
   {
     "type": "@",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {

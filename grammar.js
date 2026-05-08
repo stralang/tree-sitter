@@ -128,11 +128,13 @@ module.exports = grammar({
       $.literal_expr,
       $.binary_expr,
       $.unary_expr,
+      $.index_expr,
       $.function,
       $.struct,
       $.enum,
       $.union,
       $.function_type,
+      $.array_type,
       $.const_type,
       $.primitive_type,
     ),
@@ -174,6 +176,7 @@ module.exports = grammar({
       seq('&', $.expr),
       seq('*', $.expr),
     )),
+    index_expr: $ => prec.right(1, seq($.expr, '[', $.expr, ']')),
 
     function: $ => prec.right(1000, seq(
       $.function_type,
@@ -217,6 +220,12 @@ module.exports = grammar({
       repeatSeperated($.field, ','),
       ')',
       optional(field('return', $.expr)),
+    )),
+    array_type: $ => prec.left(0, seq(
+      '[',
+      optional(choice($.expr, '*')),
+      ']',
+      $.expr
     )),
     const_type: $ => prec.right(0, seq('const', ' ', $.expr)),
     primitive_type: $ => choice(
