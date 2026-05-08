@@ -27,10 +27,7 @@ module.exports = grammar({
     $.comment,
   ],
   rules: {
-    source_file: $ => repeat(seq(
-      choice($.field),
-      optional(';')
-    )),
+    source_file: $ => repeat($.stmt),
 
     comment: $ => token(choice(
       seq("//", /.*/),
@@ -47,17 +44,14 @@ module.exports = grammar({
       )))
     ),
 
-    stmt_block: $ => seq(
-      '{',
-      repeat(seq(
-        choice(
-          $.field,
-          $.expr,
-          $.return_stmt,
-        ),
-        optional(';')
-      )),
-      '}'
+    stmt_block: $ => seq('{', repeat($.stmt), '}'),
+    stmt: $ => seq(
+      choice(
+        $.field,
+        $.expr,
+        $.return_stmt,
+      ),
+      optional(';')
     ),
     return_stmt: $ => seq('return', $.expr),
 
