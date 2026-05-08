@@ -3,19 +3,19 @@
 
 ; Keywords
 [
-  "fn"
   "struct"
 ] @keyword.type
+("fn") @keyword.function
 
 ; Field
 (field name: (name) @property)
 
 ; Types
-(primitive_type) @type
-(void_type) @type
-(bool_type) @type
-(integer_type) @type
-(float_type) @type
+(primitive_type) @type.builtin
+(void_type) @type.builtin
+(bool_type) @type.builtin
+(integer_type) @type.builtin
+(float_type) @type.builtin
 ("const") @keyword.type
 
 ("---") @type.builtin ; Undefined
