@@ -465,6 +465,10 @@
         {
           "type": "return_stmt",
           "named": true
+        },
+        {
+          "type": "switch_stmt",
+          "named": true
         }
       ]
     }
@@ -497,6 +501,63 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "switch_case",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expr",
+          "named": true
+        },
+        {
+          "type": "stmt_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "switch_stmt",
+    "named": true,
+    "fields": {
+      "case": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "switch_case",
+            "named": true
+          },
+          {
+            "type": "{",
+            "named": false
+          },
+          {
+            "type": "}",
+            "named": false
+          }
+        ]
+      },
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -611,6 +672,10 @@
     "named": false
   },
   {
+    "type": "=>",
+    "named": false
+  },
+  {
     "type": ">",
     "named": false
   },
@@ -721,6 +786,10 @@
   },
   {
     "type": "struct",
+    "named": false
+  },
+  {
+    "type": "switch",
     "named": false
   },
   {

@@ -65,6 +65,7 @@ module.exports = grammar({
         $.for_stmt,
         $.break_stmt,
         $.continue_stmt,
+        $.switch_stmt,
       ),
       optional(';')
     ),
@@ -90,6 +91,20 @@ module.exports = grammar({
     for_range: $ => seq($.number, choice('..<', '..='), $.number),
     break_stmt: $ => prec.right(1, seq('break', optional($.name))),
     continue_stmt: $ => prec.right(1, seq('continue', optional($.name))),
+    switch_stmt: $ => seq(
+      'switch',
+      field('condition', $.expr),
+      field('case', seq(
+        '{',
+        repeatSeperated($.switch_case, ','),
+        '}'
+      ))
+    ),
+    switch_case: $ => seq(
+      $.expr,
+      '=>',
+      $.stmt_block,
+    ),
 
     expr: $ => choice(
       $.name,

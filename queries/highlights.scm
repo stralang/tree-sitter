@@ -10,6 +10,7 @@
 [
   "if"
   "else"
+  "switch"
 ] @keyword.conditional
 [
   "for"
@@ -52,7 +53,10 @@
   ";"
 ] @punctuation.delimiter
 
-("@") @punctuation.special
+[
+  "@"
+  "=>"
+] @punctuation.special
 
 [
   "="
