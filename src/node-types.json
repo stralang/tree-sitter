@@ -172,6 +172,50 @@
     }
   },
   {
+    "type": "if_stmt",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "else": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "else",
+            "named": false
+          },
+          {
+            "type": "if_stmt",
+            "named": true
+          },
+          {
+            "type": "stmt_block",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "stmt_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "integer_type",
     "named": true,
     "fields": {}
@@ -280,6 +324,10 @@
         },
         {
           "type": "field",
+          "named": true
+        },
+        {
+          "type": "if_stmt",
           "named": true
         },
         {
@@ -464,6 +512,10 @@
     "named": false
   },
   {
+    "type": "else",
+    "named": false
+  },
+  {
     "type": "f128",
     "named": false
   },
@@ -485,6 +537,10 @@
   },
   {
     "type": "fn",
+    "named": false
+  },
+  {
+    "type": "if",
     "named": false
   },
   {

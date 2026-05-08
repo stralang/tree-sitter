@@ -7,6 +7,10 @@
 ] @keyword.type
 ("fn") @keyword.function
 ("return") @keyword.return
+[
+  "if"
+  "else"
+] @keyword.conditional
 
 ; Field
 (field name: (name) @property)

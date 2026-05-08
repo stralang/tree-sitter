@@ -50,10 +50,20 @@ module.exports = grammar({
         $.field,
         $.expr,
         $.return_stmt,
+        $.if_stmt,
       ),
       optional(';')
     ),
     return_stmt: $ => seq('return', $.expr),
+    if_stmt: $ => seq(
+      'if',
+      field('condition', $.expr),
+      $.stmt_block,
+      optional(field('else', seq(
+        'else',
+        choice($.stmt_block, $.if_stmt),
+      ))),
+    ),
 
     expr: $ => choice(
       $.name,

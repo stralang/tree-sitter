@@ -164,6 +164,10 @@
             {
               "type": "SYMBOL",
               "name": "return_stmt"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "if_stmt"
             }
           ]
         },
@@ -191,6 +195,61 @@
         {
           "type": "SYMBOL",
           "name": "expr"
+        }
+      ]
+    },
+    "if_stmt": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "if"
+        },
+        {
+          "type": "FIELD",
+          "name": "condition",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expr"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "stmt_block"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "else",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "else"
+                  },
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "stmt_block"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "if_stmt"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
