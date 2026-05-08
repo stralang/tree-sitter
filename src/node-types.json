@@ -356,6 +356,10 @@
           "named": true
         },
         {
+          "type": "scope_expr",
+          "named": true
+        },
+        {
           "type": "struct",
           "named": true
         },
@@ -655,6 +659,36 @@
     }
   },
   {
+    "type": "scope_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "scope_stmt",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "stmt_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -716,6 +750,10 @@
         },
         {
           "type": "return_stmt",
+          "named": true
+        },
+        {
+          "type": "scope_stmt",
           "named": true
         },
         {

@@ -69,6 +69,7 @@ module.exports = grammar({
         $.defer_stmt,
         $.assembly_stmt,
         $.comptime_stmt,
+        $.scope_stmt,
       ),
       optional(';')
     ),
@@ -125,6 +126,7 @@ module.exports = grammar({
       field('register', seq('%', $.name)),
     ),
     comptime_stmt: $ => seq(choice('comptime', '$'), $.stmt_block),
+    scope_stmt: $ => seq('{', $.stmt_block, '}'),
 
     expr: $ => choice(
       $.name,
@@ -134,6 +136,7 @@ module.exports = grammar({
       $.index_expr,
       $.call_expr,
       $.comptime_expr,
+      $.scope_expr,
       $.function,
       $.struct,
       $.enum,
@@ -182,8 +185,9 @@ module.exports = grammar({
       seq('*', $.expr),
     )),
     index_expr: $ => prec.right(1, seq($.expr, '[', $.expr, ']')),
-    call_expr: $ => seq($.expr, '(', repeatSeperated($.expr, ','), ')'),
+    call_expr: $ => prec.right(1, seq($.expr, '(', repeatSeperated($.expr, ','), ')')),
     comptime_expr: $ => prec.right(1, seq(choice('comptime', '$'), $.expr)),
+    scope_expr: $ => seq('(', $.expr, ')'),
 
     function: $ => prec.right(1000, seq(
       $.function_type,
