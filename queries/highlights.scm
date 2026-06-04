@@ -37,6 +37,7 @@
 (bool_type) @type.builtin
 (integer_type) @type.builtin
 (float_type) @type.builtin
+(typeid_type) @type.builtin
 ("const") @keyword.type
 
 ("---") @type.builtin ; Undefined

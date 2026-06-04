@@ -2053,6 +2053,10 @@
         {
           "type": "SYMBOL",
           "name": "float_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "typeid_type"
         }
       ]
     },
@@ -2101,6 +2105,10 @@
           "value": "f128"
         }
       ]
+    },
+    "typeid_type": {
+      "type": "STRING",
+      "value": "typeid"
     },
     "name": {
       "type": "PATTERN",

@@ -656,6 +656,10 @@
           "named": true
         },
         {
+          "type": "typeid_type",
+          "named": true
+        },
+        {
           "type": "void_type",
           "named": true
         }
@@ -1159,6 +1163,10 @@
   {
     "type": "true",
     "named": false
+  },
+  {
+    "type": "typeid_type",
+    "named": true
   },
   {
     "type": "union",

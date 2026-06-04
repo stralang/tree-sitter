@@ -246,6 +246,7 @@ module.exports = grammar({
       $.bool_type,
       $.integer_type,
       $.float_type,
+      $.typeid_type,
     ),
     void_type: $ => 'void',
     bool_type: $ => 'bool',
@@ -260,6 +261,7 @@ module.exports = grammar({
       'f64',
       'f128',
     ),
+    typeid_type: $ => 'typeid',
 
     name: $ => /[_a-zA-Z][_a-zA-Z0-9]*/,
     number: $ => choice(
