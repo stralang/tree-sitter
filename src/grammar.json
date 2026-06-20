@@ -426,6 +426,10 @@
                         },
                         {
                           "type": "STRING",
+                          "value": " "
+                        },
+                        {
+                          "type": "STRING",
                           "value": "in"
                         },
                         {
@@ -462,6 +466,10 @@
                               {
                                 "type": "SYMBOL",
                                 "name": "name"
+                              },
+                              {
+                                "type": "STRING",
+                                "value": " "
                               },
                               {
                                 "type": "STRING",
@@ -508,7 +516,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "number"
+          "name": "expr"
         },
         {
           "type": "CHOICE",
@@ -525,7 +533,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "number"
+          "name": "expr"
         }
       ]
     },

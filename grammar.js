@@ -88,11 +88,11 @@ module.exports = grammar({
       repeatSeperated(choice(
         $.field,
         $.expr,
-        seq($.name, 'in', $.for_range),
+        seq($.name, ' ', 'in', $.for_range),
       ), ';'),
       $.stmt_block,
     ),
-    for_range: $ => seq($.number, choice('..<', '..='), $.number),
+    for_range: $ => seq($.expr, choice('..<', '..='), $.expr),
     break_stmt: $ => prec.right(1, seq('break', optional($.name))),
     continue_stmt: $ => prec.right(1, seq('continue', optional($.name))),
     switch_stmt: $ => seq(
