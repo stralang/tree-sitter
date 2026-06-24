@@ -22,12 +22,15 @@
 ] @keyword.conditional
 [
   "for"
-  "in"
   "break"
   "continue"
 ] @keyword.repeat
 
+(for_stmt "in" @keyword.repeat)
+
 ; Field
+(field name: (name) @function (expr (function)))
+(field name: (name) @module (stmt_block))
 (field name: (name) @property)
 (enumerator name: (name) @constant)
 
@@ -69,6 +72,8 @@
   "@"
   "=>"
   "$"
+  "..<"
+  "..="
 ] @punctuation.special
 
 [

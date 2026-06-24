@@ -336,10 +336,6 @@
           "named": true
         },
         {
-          "type": "function_type",
-          "named": true
-        },
-        {
           "type": "import",
           "named": true
         },
@@ -357,6 +353,10 @@
         },
         {
           "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "range_expr",
           "named": true
         },
         {
@@ -392,6 +392,10 @@
           },
           {
             "type": "expr",
+            "named": true
+          },
+          {
+            "type": "stmt_block",
             "named": true
           }
         ]
@@ -434,21 +438,6 @@
     "fields": {}
   },
   {
-    "type": "for_range",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "for_stmt",
     "named": true,
     "fields": {},
@@ -465,11 +454,11 @@
           "named": true
         },
         {
-          "type": "for_range",
+          "type": "name",
           "named": true
         },
         {
-          "type": "name",
+          "type": "range_expr",
           "named": true
         },
         {
@@ -481,25 +470,6 @@
   },
   {
     "type": "function",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "function_type",
-          "named": true
-        },
-        {
-          "type": "stmt_block",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "function_type",
     "named": true,
     "fields": {
       "return": {
@@ -519,6 +489,10 @@
       "types": [
         {
           "type": "field",
+          "named": true
+        },
+        {
+          "type": "stmt_block",
           "named": true
         }
       ]
@@ -661,6 +635,21 @@
         },
         {
           "type": "void_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "range_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expr",
           "named": true
         }
       ]

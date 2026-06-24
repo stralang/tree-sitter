@@ -51,7 +51,7 @@ module.exports = grammar({
       field('type', optional($.expr)),
       optional(prec(100, seq(
         choice('=', ':'),
-        field('default', choice($.expr, '---')),
+        field('default', choice($.expr, '---', $.stmt_block)),
       )))
     ),
 
@@ -88,11 +88,10 @@ module.exports = grammar({
       repeatSeperated(choice(
         $.field,
         $.expr,
-        seq($.name, ' ', 'in', $.for_range),
+        seq($.name, ' ', 'in', $.range_expr),
       ), ';'),
       $.stmt_block,
     ),
-    for_range: $ => seq($.expr, choice('..<', '..='), $.expr),
     break_stmt: $ => prec.right(1, seq('break', optional($.name))),
     continue_stmt: $ => prec.right(1, seq('continue', optional($.name))),
     switch_stmt: $ => seq(
@@ -133,6 +132,7 @@ module.exports = grammar({
       $.literal_expr,
       $.binary_expr,
       $.unary_expr,
+      $.range_expr,
       $.index_expr,
       $.call_expr,
       $.comptime_expr,
@@ -142,7 +142,6 @@ module.exports = grammar({
       $.enum,
       $.union,
       $.import,
-      $.function_type,
       $.array_type,
       $.const_type,
       $.primitive_type,
@@ -185,13 +184,18 @@ module.exports = grammar({
       seq('&', $.expr),
       seq('*', $.expr),
     )),
+    range_expr: $ => prec.left(20, seq($.expr, choice('..<', '..='), $.expr)),
     index_expr: $ => prec.right(1, seq($.expr, '[', $.expr, ']')),
     call_expr: $ => prec.right(1, seq($.expr, '(', repeatSeperated($.expr, ','), ')')),
     comptime_expr: $ => prec.right(1, seq(choice('comptime', '$'), $.expr)),
     scope_expr: $ => seq('(', $.expr, ')'),
 
     function: $ => prec.right(1000, seq(
-      $.function_type,
+      'fn',
+      '(',
+      repeatSeperated($.field, ','),
+      ')',
+      optional(field('return', $.expr)),
       choice($.stmt_block, '---')
     )),
     struct: $ => seq(
@@ -227,13 +231,6 @@ module.exports = grammar({
     ),
     import: $ => seq('import', $.string),
 
-    function_type: $ => prec.left(0, seq(
-      'fn',
-      '(',
-      repeatSeperated($.field, ','),
-      ')',
-      optional(field('return', $.expr)),
-    )),
     array_type: $ => prec.left(0, seq(
       '[',
       optional(choice($.expr, '*')),
