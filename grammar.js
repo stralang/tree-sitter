@@ -130,6 +130,7 @@ module.exports = grammar({
     expr: $ => choice(
       $.name,
       $.literal_expr,
+      $.assignment_expr,
       $.binary_expr,
       $.unary_expr,
       $.range_expr,
@@ -152,8 +153,16 @@ module.exports = grammar({
       $.string,
       $.bool,
     ),
+    assignment_expr: $ => prec.right(0, seq(
+      $.expr,
+      choice(
+        '=',
+        '|=', '^=', '&=', '>>=', '<<=',
+        '+=', '-=', '*=', '/=', '%=',
+      ),
+      $.expr,
+    )),
     binary_expr: $ => choice(
-      prec.right(0, seq($.expr, '=', $.expr)),
       prec.left(1, seq($.expr, '||', $.expr)),
       prec.left(2, seq($.expr, '&&', $.expr)),
       prec.left(3, seq($.expr, '|', $.expr)),
