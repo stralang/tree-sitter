@@ -15,6 +15,10 @@ function repeatSeperated(rule, seperator) {
   ))
 }
 
+function binaryOperator(precedence, symbol, expr) {
+  return prec.left(precedence, seq(field('lhs', expr), symbol, field('rhs', expr)))
+}
+
 module.exports = grammar({
   name: "stra",
 
@@ -154,37 +158,37 @@ module.exports = grammar({
       $.bool,
     ),
     assignment_expr: $ => prec.right(0, seq(
-      $.expr,
+      field('lhs', $.expr),
       choice(
         '=',
         '|=', '^=', '&=', '>>=', '<<=',
         '+=', '-=', '*=', '/=', '%=',
       ),
-      $.expr,
+      field('rhs', $.expr),
     )),
     binary_expr: $ => choice(
-      prec.left(1, seq($.expr, '||', $.expr)),
-      prec.left(2, seq($.expr, '&&', $.expr)),
-      prec.left(3, seq($.expr, '|', $.expr)),
-      prec.left(4, seq($.expr, '^', $.expr)),
-      prec.left(5, seq($.expr, '&', $.expr)),
-      prec.left(6, seq($.expr, '==', $.expr)),
-      prec.left(6, seq($.expr, '!=', $.expr)),
-      prec.left(7, seq($.expr, '>', $.expr)),
-      prec.left(7, seq($.expr, '<', $.expr)),
-      prec.left(7, seq($.expr, '>=', $.expr)),
-      prec.left(7, seq($.expr, '<=', $.expr)),
-      prec.left(8, seq($.expr, '<<', $.expr)),
-      prec.left(8, seq($.expr, '>>', $.expr)),
-      prec.left(9, seq($.expr, '+', $.expr)),
-      prec.left(9, seq($.expr, '-', $.expr)),
-      prec.left(10, seq($.expr, '*', $.expr)),
-      prec.left(10, seq($.expr, '/', $.expr)),
-      prec.left(10, seq($.expr, '%', $.expr)),
+      binaryOperator(1, '||', $.expr),
+      binaryOperator(2, '&&', $.expr),
+      binaryOperator(3, '|', $.expr),
+      binaryOperator(4, '^', $.expr),
+      binaryOperator(5, '&', $.expr),
+      binaryOperator(6, '==', $.expr),
+      binaryOperator(6, '!=', $.expr),
+      binaryOperator(7, '>', $.expr),
+      binaryOperator(7, '<', $.expr),
+      binaryOperator(7, '>=', $.expr),
+      binaryOperator(7, '<=', $.expr),
+      binaryOperator(8, '<<', $.expr),
+      binaryOperator(8, '>>', $.expr),
+      binaryOperator(9, '+', $.expr),
+      binaryOperator(9, '-', $.expr),
+      binaryOperator(10, '*', $.expr),
+      binaryOperator(10, '/', $.expr),
+      binaryOperator(10, '%', $.expr),
 
-      prec.left(11, seq($.expr, 'as', $.expr)),
-      prec.left(11, seq($.expr, 'bitcast', $.expr)),
-      prec.left(14, seq($.expr, '.', $.expr)),
+      binaryOperator(11, 'as', $.expr),
+      binaryOperator(11, 'bitcast', $.expr),
+      binaryOperator(14, '.', $.expr),
     ),
     unary_expr: $ => prec.right(12, choice(
       seq('-', $.expr),
@@ -194,8 +198,8 @@ module.exports = grammar({
       seq('*', $.expr),
     )),
     range_expr: $ => prec.left(20, seq($.expr, choice('..<', '..='), $.expr)),
-    index_expr: $ => prec.right(13, seq($.expr, '[', $.expr, ']')),
-    call_expr: $ => prec.right(13, seq($.expr, '(', repeatSeperated($.expr, ','), ')')),
+    index_expr: $ => prec.right(13, seq(field('indexee', $.expr), '[', $.expr, ']')),
+    call_expr: $ => prec.right(13, seq(field('callee', $.expr), '(', repeatSeperated($.expr, ','), ')')),
     comptime_expr: $ => prec.right(1, seq(choice('comptime', '$'), $.expr)),
     scope_expr: $ => seq('(', $.expr, ')'),
 

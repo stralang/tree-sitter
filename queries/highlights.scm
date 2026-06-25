@@ -1,6 +1,10 @@
 ; Default
 ((name) @variable (#set! priority 95))
 
+; Call highlights
+(call_expr callee: (expr (name) @function.call))
+(call_expr callee: (expr (binary_expr rhs: (expr (name) @function.call))))
+
 ; Keywords
 [
   "defer"
