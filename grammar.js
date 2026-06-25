@@ -196,7 +196,7 @@ module.exports = grammar({
       repeatSeperated($.field, ','),
       ')',
       optional(field('return', $.expr)),
-      choice($.stmt_block, '---')
+      optional(choice($.stmt_block, '---'))
     )),
     struct: $ => seq(
       'struct',

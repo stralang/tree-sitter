@@ -1724,12 +1724,20 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "stmt_block"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "stmt_block"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "---"
+                  }
+                ]
               },
               {
-                "type": "STRING",
-                "value": "---"
+                "type": "BLANK"
               }
             ]
           }
