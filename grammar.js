@@ -125,7 +125,7 @@ module.exports = grammar({
       field('register', seq('%', $.name)),
     ),
     comptime_stmt: $ => seq(choice('comptime', '$'), $.stmt_block),
-    scope_stmt: $ => seq('{', $.stmt_block, '}'),
+    scope_stmt: $ => $.stmt_block,
 
     expr: $ => choice(
       $.name,

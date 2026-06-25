@@ -826,21 +826,8 @@
       ]
     },
     "scope_stmt": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "{"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "stmt_block"
-        },
-        {
-          "type": "STRING",
-          "value": "}"
-        }
-      ]
+      "type": "SYMBOL",
+      "name": "stmt_block"
     },
     "expr": {
       "type": "CHOICE",
