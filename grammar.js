@@ -173,11 +173,11 @@ module.exports = grammar({
       prec.left(10, seq($.expr, '/', $.expr)),
       prec.left(10, seq($.expr, '%', $.expr)),
 
-      prec.left(12, seq($.expr, 'as', $.expr)),
-      prec.left(12, seq($.expr, 'bitcast', $.expr)),
-      prec.left(13, seq($.expr, '.', $.expr)),
+      prec.left(11, seq($.expr, 'as', $.expr)),
+      prec.left(11, seq($.expr, 'bitcast', $.expr)),
+      prec.left(14, seq($.expr, '.', $.expr)),
     ),
-    unary_expr: $ => prec.right(11, choice(
+    unary_expr: $ => prec.right(12, choice(
       seq('-', $.expr),
       seq('!', $.expr),
       seq('~', $.expr),
@@ -185,8 +185,8 @@ module.exports = grammar({
       seq('*', $.expr),
     )),
     range_expr: $ => prec.left(20, seq($.expr, choice('..<', '..='), $.expr)),
-    index_expr: $ => prec.right(1, seq($.expr, '[', $.expr, ']')),
-    call_expr: $ => prec.right(1, seq($.expr, '(', repeatSeperated($.expr, ','), ')')),
+    index_expr: $ => prec.right(13, seq($.expr, '[', $.expr, ']')),
+    call_expr: $ => prec.right(13, seq($.expr, '(', repeatSeperated($.expr, ','), ')')),
     comptime_expr: $ => prec.right(1, seq(choice('comptime', '$'), $.expr)),
     scope_expr: $ => seq('(', $.expr, ')'),
 
