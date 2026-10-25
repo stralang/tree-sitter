@@ -137,6 +137,7 @@ module.exports = grammar({
       $.assignment_expr,
       $.binary_expr,
       $.unary_expr,
+      $.dereference_expr,
       $.range_expr,
       $.index_expr,
       $.call_expr,
@@ -149,6 +150,7 @@ module.exports = grammar({
       $.import,
       $.array_type,
       $.const_type,
+      $.pointer_type,
       $.primitive_type,
     ),
     literal_expr: $ => choice(
@@ -161,7 +163,7 @@ module.exports = grammar({
       field('lhs', $.expr),
       choice(
         '=',
-        '|=', '^=', '&=', '>>=', '<<=',
+        '|=', '~=', '&=', '>>=', '<<=',
         '+=', '-=', '*=', '/=', '%=',
       ),
       field('rhs', $.expr),
@@ -170,7 +172,7 @@ module.exports = grammar({
       binaryOperator(1, '||', $.expr),
       binaryOperator(2, '&&', $.expr),
       binaryOperator(3, '|', $.expr),
-      binaryOperator(4, '^', $.expr),
+      binaryOperator(4, '~', $.expr),
       binaryOperator(5, '&', $.expr),
       binaryOperator(6, '==', $.expr),
       binaryOperator(6, '!=', $.expr),
@@ -195,8 +197,8 @@ module.exports = grammar({
       seq('!', $.expr),
       seq('~', $.expr),
       seq('&', $.expr),
-      seq('*', $.expr),
     )),
+    dereference_expr: $ => prec.left(12, seq($.expr, '^')),
     range_expr: $ => prec.left(20, seq($.expr, choice('..<', '..='), $.expr)),
     index_expr: $ => prec.right(13, seq(field('indexee', $.expr), '[', $.expr, ']')),
     call_expr: $ => prec.right(13, seq(field('callee', $.expr), '(', repeatSeperated($.expr, ','), ')')),
@@ -246,10 +248,11 @@ module.exports = grammar({
 
     array_type: $ => prec.left(0, seq(
       '[',
-      optional(choice($.expr, '*')),
+      optional(choice($.expr, '^')),
       ']',
       $.expr
     )),
+    pointer_type: $ => prec.right(12, seq('^', $.expr)),
     const_type: $ => prec.right(0, seq('const', ' ', $.expr)),
     primitive_type: $ => choice(
       $.void_type,

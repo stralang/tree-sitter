@@ -854,6 +854,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "dereference_expr"
+        },
+        {
+          "type": "SYMBOL",
           "name": "range_expr"
         },
         {
@@ -899,6 +903,10 @@
         {
           "type": "SYMBOL",
           "name": "const_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "pointer_type"
         },
         {
           "type": "SYMBOL",
@@ -954,7 +962,7 @@
               },
               {
                 "type": "STRING",
-                "value": "^="
+                "value": "~="
               },
               {
                 "type": "STRING",
@@ -1107,7 +1115,7 @@
               },
               {
                 "type": "STRING",
-                "value": "^"
+                "value": "~"
               },
               {
                 "type": "FIELD",
@@ -1672,19 +1680,23 @@
                 "name": "expr"
               }
             ]
+          }
+        ]
+      }
+    },
+    "dereference_expr": {
+      "type": "PREC_LEFT",
+      "value": 12,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expr"
           },
           {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "*"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "expr"
-              }
-            ]
+            "type": "STRING",
+            "value": "^"
           }
         ]
       }
@@ -2225,7 +2237,7 @@
                   },
                   {
                     "type": "STRING",
-                    "value": "*"
+                    "value": "^"
                   }
                 ]
               },
@@ -2237,6 +2249,23 @@
           {
             "type": "STRING",
             "value": "]"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expr"
+          }
+        ]
+      }
+    },
+    "pointer_type": {
+      "type": "PREC_RIGHT",
+      "value": 12,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "^"
           },
           {
             "type": "SYMBOL",
