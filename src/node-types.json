@@ -8,6 +8,10 @@
       "required": true,
       "types": [
         {
+          "type": "const_expr",
+          "named": true
+        },
+        {
           "type": "expr",
           "named": true
         }
@@ -254,7 +258,7 @@
     }
   },
   {
-    "type": "const_type",
+    "type": "const_expr",
     "named": true,
     "fields": {},
     "children": {
@@ -391,10 +395,6 @@
           "named": true
         },
         {
-          "type": "const_type",
-          "named": true
-        },
-        {
           "type": "dereference_expr",
           "named": true
         },
@@ -489,6 +489,10 @@
         "multiple": false,
         "required": false,
         "types": [
+          {
+            "type": "const_expr",
+            "named": true
+          },
           {
             "type": "expr",
             "named": true
@@ -703,6 +707,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "const_expr",
+          "named": true
+        },
         {
           "type": "expr",
           "named": true

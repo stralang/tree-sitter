@@ -177,8 +177,17 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "expr"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "const_expr"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "expr"
+                  }
+                ]
               },
               {
                 "type": "BLANK"
@@ -899,10 +908,6 @@
         {
           "type": "SYMBOL",
           "name": "array_type"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "const_type"
         },
         {
           "type": "SYMBOL",
@@ -1873,6 +1878,27 @@
         }
       ]
     },
+    "const_expr": {
+      "type": "PREC_RIGHT",
+      "value": 12,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "const"
+          },
+          {
+            "type": "STRING",
+            "value": " "
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expr"
+          }
+        ]
+      }
+    },
     "function": {
       "type": "PREC_RIGHT",
       "value": 1000,
@@ -2251,8 +2277,17 @@
             "value": "]"
           },
           {
-            "type": "SYMBOL",
-            "name": "expr"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "const_expr"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "expr"
+              }
+            ]
           }
         ]
       }
@@ -2268,29 +2303,17 @@
             "value": "^"
           },
           {
-            "type": "SYMBOL",
-            "name": "expr"
-          }
-        ]
-      }
-    },
-    "const_type": {
-      "type": "PREC_RIGHT",
-      "value": 0,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "const"
-          },
-          {
-            "type": "STRING",
-            "value": " "
-          },
-          {
-            "type": "SYMBOL",
-            "name": "expr"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "const_expr"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "expr"
+              }
+            ]
           }
         ]
       }

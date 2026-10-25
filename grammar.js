@@ -52,7 +52,7 @@ module.exports = grammar({
       optional($.attributes),
       field('name', $.name),
       ':',
-      field('type', optional($.expr)),
+      field('type', optional(choice($.const_expr, $.expr))),
       optional(prec(100, seq(
         choice('=', ':'),
         field('default', choice($.expr, '---', $.stmt_block)),
@@ -149,7 +149,6 @@ module.exports = grammar({
       $.union,
       $.import,
       $.array_type,
-      $.const_type,
       $.pointer_type,
       $.primitive_type,
     ),
@@ -205,6 +204,8 @@ module.exports = grammar({
     comptime_expr: $ => prec.right(1, seq(choice('comptime', '$'), $.expr)),
     scope_expr: $ => seq('(', $.expr, ')'),
 
+    const_expr: $ => prec.right(12, seq('const', ' ', $.expr)),
+
     function: $ => prec.right(1000, seq(
       'fn',
       '(',
@@ -250,10 +251,9 @@ module.exports = grammar({
       '[',
       optional(choice($.expr, '^')),
       ']',
-      $.expr
+      choice($.const_expr, $.expr),
     )),
-    pointer_type: $ => prec.right(12, seq('^', $.expr)),
-    const_type: $ => prec.right(0, seq('const', ' ', $.expr)),
+    pointer_type: $ => prec.right(12, seq('^', choice($.const_expr, $.expr))),
     primitive_type: $ => choice(
       $.void_type,
       $.bool_type,
